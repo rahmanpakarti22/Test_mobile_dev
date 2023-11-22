@@ -47,4 +47,28 @@ class MotorDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         db.insert(TABLE_NAME, null, values)
         db.close()
     }
+
+    fun getAllDataMotor(): List<Motor>{
+        val motorList = mutableListOf<Motor>()
+        val db = readableDatabase
+        val query = "SELECT * FROM $TABLE_NAME"
+        val cursor = db.rawQuery(query, null)
+
+        while (cursor.moveToNext()){
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID_MOTOR))
+            val tahun_motor = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TAHUN_MOTOR))
+            val warna_motor = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_WARNA_MOTOR))
+            val harga_motor = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_HARGA_MOTOR))
+            val mesin_motor = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_MESIN_MOTOR))
+            val suspensi_motor  = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SUS_MOTOR))
+            val transmisi_motor = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TRANS_MOTOR))
+            val stok_motor = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_STOK_MOTOR))
+
+            val motor= Motor(id, tahun_motor, warna_motor, harga_motor, mesin_motor, suspensi_motor, transmisi_motor, stok_motor)
+            motorList.add(motor)
+        }
+        cursor.close()
+        db.close()
+        return motorList
+    }
 }
