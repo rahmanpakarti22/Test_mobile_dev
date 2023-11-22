@@ -71,4 +71,13 @@ class MotorDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         db.close()
         return motorList
     }
+
+    fun deleteDataMotor(motorId: Int)
+    {
+        val db = writableDatabase
+        val whereclause = "$COLUMN_ID_MOTOR = ?"
+        val whereArgs   = arrayOf(motorId.toString())
+        db.delete(TABLE_NAME, whereclause, whereArgs)
+        db.close()
+    }
 }
