@@ -14,6 +14,7 @@ import com.example.code.R
 import com.example.code.View.Data_mobil.Mobil
 import com.example.code.View.Data_mobil.MobilDatabaseHelper
 import com.example.code.View.Data_mobil.Update_data_mobil
+import com.example.code.View.Transaksi_mobil
 
 class MobilAdapter(private var mobil: List<Mobil>, context: Context) :
     RecyclerView.Adapter<MobilAdapter.MobilViewHolder>() {
@@ -28,6 +29,7 @@ class MobilAdapter(private var mobil: List<Mobil>, context: Context) :
         val hargaTextView: TextView = itemView.findViewById(R.id.harga_tv)
         val editDatamobil: LinearLayout = itemView.findViewById(R.id.edit_data_mobil)
         val hapusDatamobil: LinearLayout = itemView.findViewById(R.id.hapus_data_mobil)
+        val jualDatamobil: LinearLayout = itemView.findViewById(R.id.jual_data_mobil)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MobilViewHolder {
@@ -46,6 +48,13 @@ class MobilAdapter(private var mobil: List<Mobil>, context: Context) :
 
         holder.editDatamobil.setOnClickListener {
             val intent = Intent(holder.itemView.context, Update_data_mobil::class.java).apply {
+                putExtra("id_mobil", mobil.id)
+            }
+            holder.itemView.context.startActivity(intent)
+        }
+
+        holder.jualDatamobil.setOnClickListener {
+            val intent = Intent(holder.itemView.context, Transaksi_mobil::class.java).apply {
                 putExtra("id_mobil", mobil.id)
             }
             holder.itemView.context.startActivity(intent)

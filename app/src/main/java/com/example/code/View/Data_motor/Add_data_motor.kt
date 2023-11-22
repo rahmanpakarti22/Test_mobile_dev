@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.code.View.Home.Home
-import com.example.code.View.MotorAdapter
+import com.example.code.View.Adapter_motor.MotorAdapter
 import com.example.code.databinding.ActivityAddDataMotorBinding
 
 class Add_data_motor : AppCompatActivity()

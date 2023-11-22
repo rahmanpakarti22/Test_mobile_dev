@@ -1,4 +1,4 @@
-package com.example.code.View
+package com.example.code.View.Adapter_motor
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.code.R
-import com.example.code.View.Data_mobil.Update_data_mobil
 import com.example.code.View.Data_motor.Motor
 import com.example.code.View.Data_motor.MotorDatabaseHelper
 import com.example.code.View.Data_motor.Update_data_motor
