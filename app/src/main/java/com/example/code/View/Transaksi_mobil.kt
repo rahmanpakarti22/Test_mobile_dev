@@ -3,10 +3,12 @@ package com.example.code.View
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import com.example.code.R
 import com.example.code.View.Data_mobil.Add_data_mobil
+import com.example.code.View.Data_mobil.Mobil
 import com.example.code.View.Data_mobil.MobilDatabaseHelper
 import com.example.code.databinding.ActivityTransaksiMobilBinding
 import com.google.android.material.textfield.TextInputEditText
@@ -29,6 +31,7 @@ class Transaksi_mobil : AppCompatActivity()
 
     private lateinit var db: MobilDatabaseHelper
     private var mobilId: Int = -1
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -84,27 +87,31 @@ class Transaksi_mobil : AppCompatActivity()
     private fun Validasi()
     {
         var boolean = true
-        val pembeli_mobil = pembeli_mobilTl.text.toString()
-        val kontak_mobil  = kontak_pembeli_Tl.text.toString()
-        val alamat_mobil  = alamat_pembeli_Tl.text.toString()
+        val pembeli_mobil_tr = pembeli_mobilTl.text.toString()
+        val kontak_mobil_tr  = kontak_pembeli_Tl.text.toString()
+        val alamat_mobil_tr  = alamat_pembeli_Tl.text.toString()
 
-        if (pembeli_mobil.isEmpty())
+        if (pembeli_mobil_tr.isEmpty())
         {
             pembeli_mobilTl.setError("Pembeli Harus Diisi!!")
             boolean = false
         }
-        else if (kontak_mobil.isEmpty())
+        else if (kontak_mobil_tr.isEmpty())
         {
             kontak_pembeli_Tl.setError("Kontak Harus Diisi!!")
             boolean = false
         }
-        else if (alamat_mobil.isEmpty())
+        else if (alamat_mobil_tr.isEmpty())
         {
             alamat_pembeli_Tl.setError("Alamat Harus Diisi!!")
             boolean = false
         }
         else
         {
+            val transaksi = Transaksi(0, idMobilFk = mobilId.toString(),pembeli_mobil_tr, kontak_mobil_tr, alamat_mobil_tr)
+            Log.d("Database Insert", "idMobilFk: ${mobilId.toString()}, pembeli_mobil_tr: $pembeli_mobil_tr, kontak_mobil_tr: $kontak_mobil_tr, alamat_mobil_tr: $alamat_mobil_tr")
+            db.insertDataTransaksi(transaksi)
+
             val intent = Intent(this, Add_data_mobil::class.java)
             startActivity(intent)
 

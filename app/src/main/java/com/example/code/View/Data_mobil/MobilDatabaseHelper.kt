@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.code.View.Transaksi
 
 class MobilDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
@@ -19,12 +20,29 @@ class MobilDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         private const val COLUMN_TIPE_MOBIL = "tipe_mobil"
         private const val COLUMN_STOK_MOBIL = "stok_mobil"
 
+        private const val TABLE_TRANSAKSI_NAME = "transaksi_data"
+        private const val COLUMN_ID_TRANSAKSI = "id_transaksi"
+        private const val COLUMN_ID_MOBIL_FK = "id_mobil_fk"
+        private const val COLUMN_PEMBELI_TR_MOBIL = "pembeli_mobil"
+        private const val COLUMN_KONTAK_TR_MOBIL = "kontak_mobil"
+        private const val COLUMN_ALAMAT_TR_MOBIL = "alamat_mobil"
+
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
         val CreateTableQuery =
             "CREATE TABLE $TABLE_NAME ($COLUMN_ID_MOBIL INTEGER PRIMARY KEY AUTOINCREMENT, $COLUMN_TAHUN_MOBIL TEXT, $COLUMN_WARNA_MOBIL TEXT, $COLUMN_HARGA_MOBIL TEXT, $COLUMN_MESIN_MOBIL TEXT, $COLUMN_KAPASITAS_MOBIL TEXT, $COLUMN_TIPE_MOBIL TEXT, $COLUMN_STOK_MOBIL TEXT)"
         db?.execSQL(CreateTableQuery)
+
+        val createTransaksiTableQuery =
+            "CREATE TABLE $TABLE_TRANSAKSI_NAME ($COLUMN_ID_TRANSAKSI INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "$COLUMN_ID_MOBIL_FK INTEGER, " +
+                    "$COLUMN_PEMBELI_TR_MOBIL TEXT, " +
+                    "$COLUMN_KONTAK_TR_MOBIL TEXT, " +
+                    "$COLUMN_ALAMAT_TR_MOBIL TEXT, " +
+                    "FOREIGN KEY($COLUMN_ID_MOBIL_FK) REFERENCES $TABLE_NAME($COLUMN_ID_MOBIL))"
+
+        db?.execSQL(createTransaksiTableQuery)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -121,6 +139,27 @@ class MobilDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         val whereclause = "$COLUMN_ID_MOBIL = ?"
         val whereArgs   = arrayOf(mobilId.toString())
         db.delete(TABLE_NAME, whereclause, whereArgs)
+        db.close()
+    }
+
+    fun insertDataTransaksi(transaksi: Transaksi)
+    {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put(COLUMN_ID_MOBIL_FK, transaksi.idMobilFk)
+            put(COLUMN_PEMBELI_TR_MOBIL, transaksi.pembelimobil)
+            put(COLUMN_KONTAK_TR_MOBIL, transaksi.kontakmobil)
+            put(COLUMN_ALAMAT_TR_MOBIL, transaksi.alamatmobil)
+        }
+
+        db.insert(TABLE_TRANSAKSI_NAME, null, values)
+
+        // Decrease the stock count in the "mobil_data" table
+        val updateStockQuery =
+            "UPDATE $TABLE_NAME SET $COLUMN_STOK_MOBIL = $COLUMN_STOK_MOBIL - 1 WHERE $COLUMN_ID_MOBIL = ${transaksi.idMobilFk}"
+
+        db.execSQL(updateStockQuery)
+
         db.close()
     }
 }
