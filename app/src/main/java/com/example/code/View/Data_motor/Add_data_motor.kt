@@ -44,4 +44,12 @@ class Add_data_motor : AppCompatActivity()
         super.onResume()
         motorAdapter.refreshData(db.getAllDataMotor())
     }
+
+    override fun onBackPressed()
+    {
+        super.onBackPressed()
+        val intent = Intent(this, Home::class.java)
+        startActivity(intent)
+        finish()
+    }
 }

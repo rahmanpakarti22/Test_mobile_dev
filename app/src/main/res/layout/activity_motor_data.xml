@@ -26,6 +26,25 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="40dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/back_ly">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="TAMBAH DATA MOTOR"
+            android:textColor="@color/color_2"
+            android:textStyle="bold"
+            android:textSize="23sp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -50,15 +69,6 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_margin="10dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/color_1"
-                    android:text="TAMBAH DATA MOTOR"
-                    android:gravity="center"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"

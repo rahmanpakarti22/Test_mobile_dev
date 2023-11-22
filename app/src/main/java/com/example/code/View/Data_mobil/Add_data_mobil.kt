@@ -44,4 +44,12 @@ class Add_data_mobil : AppCompatActivity()
         super.onResume()
         mobilAdapter.refreshData(db.getAllDataMobil())
     }
+
+    override fun onBackPressed()
+    {
+        super.onBackPressed()
+        val intent = Intent(this, Home::class.java)
+        startActivity(intent)
+        finish()
+    }
 }
