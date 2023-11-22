@@ -51,7 +51,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
-            android:id="@+id/tambah_data_mobil_home_ly"
+            android:id="@+id/tambah_data_motor_home_ly"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="?attr/selectableItemBackground"
