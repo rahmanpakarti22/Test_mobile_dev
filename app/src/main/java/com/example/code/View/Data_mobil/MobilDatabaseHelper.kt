@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper
 
 class MobilDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
-        private const val DATABASE_NAME = "test_db"
+        private const val DATABASE_NAME = "test1_db"
         private const val DATABASE_VERSION = 1
         private const val TABLE_NAME = "mobil_data"
         private const val COLUMN_ID_MOBIL = "id"

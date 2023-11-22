@@ -12,10 +12,15 @@
         android:supportsRtl="true"
         tools:targetApi="31">
         <activity
+            android:name=".View.Add_data_motor"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Act" />
+        <activity
             android:name=".View.Data_mobil.Update_data_mobil"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Act"/>
+            android:theme="@style/Act" />
         <activity
             android:name=".View.Data_mobil.Mobil_data"
             android:exported="false"
