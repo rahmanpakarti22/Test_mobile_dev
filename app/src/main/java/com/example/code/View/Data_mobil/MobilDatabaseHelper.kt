@@ -162,4 +162,28 @@ class MobilDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
 
         db.close()
     }
+
+    fun getTransaksiByMobilId(mobilId: Int): Transaksi? {
+        val db = readableDatabase
+        val query = "SELECT * FROM $TABLE_TRANSAKSI_NAME WHERE $COLUMN_ID_MOBIL_FK = $mobilId"
+        val cursor = db.rawQuery(query, null)
+
+        var transaksi: Transaksi? = null
+
+        if (cursor.moveToFirst()) {
+            val idTransaksi = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID_TRANSAKSI))
+            val idMobilFk = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ID_MOBIL_FK))
+            val pembeli = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PEMBELI_TR_MOBIL))
+            val kontak = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_KONTAK_TR_MOBIL))
+            val alamat = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ALAMAT_TR_MOBIL))
+
+            transaksi = Transaksi(idTransaksi, idMobilFk, pembeli, kontak, alamat)
+        }
+
+        cursor.close()
+        db.close()
+
+        return transaksi
+    }
+
 }

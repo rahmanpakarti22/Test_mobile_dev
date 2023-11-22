@@ -17,12 +17,12 @@ class Transaksi_mobil : AppCompatActivity()
 {
     private lateinit var binding: ActivityTransaksiMobilBinding
 
-    private lateinit var tahun_mobil_tr_tv: TextView
-    private lateinit var warna_mobil_tr_tv: TextView
-    private lateinit var mesin_mobil_tr_tv: TextView
-    private lateinit var harga_mobil_tr_tv: TextView
-    private lateinit var kapasitas_mobil_tr_tv: TextView
-    private lateinit var tipe_mobil_tr_tv: TextView
+    private lateinit var tahun_mobil_tr_tv: TextInputEditText
+    private lateinit var warna_mobil_tr_tv: TextInputEditText
+    private lateinit var mesin_mobil_tr_tv: TextInputEditText
+    private lateinit var harga_mobil_tr_tv: TextInputEditText
+    private lateinit var kapasitas_mobil_tr_tv: TextInputEditText
+    private lateinit var tipe_mobil_tr_tv: TextInputEditText
     private lateinit var stok_mobil_tr_tv: TextInputEditText
 
     private lateinit var pembeli_mobilTl: TextInputEditText
