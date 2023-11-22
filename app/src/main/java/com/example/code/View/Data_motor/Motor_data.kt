@@ -1,4 +1,4 @@
-package com.example.code.View
+package com.example.code.View.Data_motor
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.code.R
-import com.example.code.View.Data_mobil.Add_data_mobil
 import com.example.code.databinding.ActivityMotorDataBinding
 import com.google.android.material.textfield.TextInputEditText
 

@@ -1,4 +1,4 @@
-package com.example.code.View
+package com.example.code.View.Data_motor
 
 import android.content.ContentValues
 import android.content.Context
@@ -70,6 +70,44 @@ class MotorDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         cursor.close()
         db.close()
         return motorList
+    }
+
+    fun getDataMotorById(motorId: Int): Motor {
+        val db = readableDatabase
+        val query = "SELECT * FROM $TABLE_NAME WHERE $COLUMN_ID_MOTOR = $motorId"
+        val cursor = db.rawQuery(query, null)
+        cursor.moveToFirst()
+
+        val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID_MOTOR))
+        val tahun_motor = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TAHUN_MOTOR))
+        val warna_motor = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_WARNA_MOTOR))
+        val harga_motor = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_HARGA_MOTOR))
+        val mesin_motor = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_MESIN_MOTOR))
+        val suspensi_motor  = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SUS_MOTOR))
+        val transmisi_motor = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TRANS_MOTOR))
+        val stok_motor = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_STOK_MOTOR))
+
+        cursor.close()
+        db.close()
+        return  Motor(id, tahun_motor, warna_motor, harga_motor, mesin_motor, suspensi_motor, transmisi_motor, stok_motor)
+    }
+
+    fun updateDataMotor(motor: Motor)
+    {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put(COLUMN_TAHUN_MOTOR, motor.tahun_motor)
+            put(COLUMN_WARNA_MOTOR, motor.warna_motor)
+            put(COLUMN_HARGA_MOTOR, motor.harga_motor)
+            put(COLUMN_MESIN_MOTOR, motor.mesin_motor)
+            put(COLUMN_SUS_MOTOR, motor.suspensi_motor)
+            put(COLUMN_TRANS_MOTOR, motor.transmisi_motor)
+            put(COLUMN_STOK_MOTOR, motor.stok_motor)
+        }
+        val whereclause = "$COLUMN_ID_MOTOR =?"
+        val whereArgs   = arrayOf(motor.id.toString())
+        db.update(TABLE_NAME, values, whereclause, whereArgs)
+        db.close()
     }
 
     fun deleteDataMotor(motorId: Int)

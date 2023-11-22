@@ -3,7 +3,7 @@ package com.example.code.View.Home
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.code.View.Add_data_motor
+import com.example.code.View.Data_motor.Add_data_motor
 import com.example.code.View.Data_mobil.Add_data_mobil
 import com.example.code.databinding.ActivityHomeBinding
 

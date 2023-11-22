@@ -1,6 +1,7 @@
 package com.example.code.View
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.code.R
-import com.example.code.View.Adapter_mobil.MobilAdapter
+import com.example.code.View.Data_mobil.Update_data_mobil
+import com.example.code.View.Data_motor.Motor
+import com.example.code.View.Data_motor.MotorDatabaseHelper
+import com.example.code.View.Data_motor.Update_data_motor
 
 class MotorAdapter(private var motor: List<Motor>, context: Context) : RecyclerView.Adapter<MotorAdapter.MotorViewHolder>(){
 
@@ -20,6 +24,7 @@ class MotorAdapter(private var motor: List<Motor>, context: Context) : RecyclerV
         val susTextView: TextView   = itemView.findViewById(R.id.suspensi_motor_tv)
         val tahunTextView: TextView = itemView.findViewById(R.id.tahun_motor_tv)
         val hargaTextView: TextView = itemView.findViewById(R.id.harga_motor_tv)
+        val editDataMotor: LinearLayout  = itemView.findViewById(R.id.edit_data_motor)
         val hapusDataMotor: LinearLayout = itemView.findViewById(R.id.hapus_data_motor)
     }
 
@@ -36,6 +41,13 @@ class MotorAdapter(private var motor: List<Motor>, context: Context) : RecyclerV
         holder.susTextView.text   = motor.suspensi_motor
         holder.tahunTextView.text = motor.tahun_motor
         holder.hargaTextView.text = motor.harga_motor
+
+        holder.editDataMotor.setOnClickListener {
+            val intent = Intent(holder.itemView.context, Update_data_motor::class.java).apply {
+                putExtra("id_motor", motor.id)
+            }
+            holder.itemView.context.startActivity(intent)
+        }
 
         holder.hapusDataMotor.setOnClickListener {
             db.deleteDataMotor(motor.id)

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
-    tools:context=".View.Data_motor.Motor_data">
+    tools:context=".View.Data_motor.Update_data_motor">
 
     <LinearLayout
         android:id="@+id/back_ly"
@@ -57,7 +57,7 @@
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:textColor="@color/color_1"
-                    android:text="TAMBAH DATA MOTOR"
+                    android:text="EDIT DATA MOBIL"
                     android:gravity="center"/>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -69,7 +69,7 @@
                     app:boxStrokeColor="@color/color_1">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tahun_motor_add_data_Tl"
+                        android:id="@+id/tahun_motor_update_data_Tl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/color_1"
@@ -89,14 +89,14 @@
                     app:boxStrokeColor="@color/color_1">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/warna_motor_add_data_Tl"
+                        android:id="@+id/warna_motor_update_data_Tl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/color_1"
+                        android:hint="Warna Motor"
                         android:inputType="text"
-                        android:textStyle="bold"
+                        android:textColor="@color/color_1"
                         android:textSize="14sp"
-                        android:hint="Warna Motor" />
+                        android:textStyle="bold" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,14 +109,14 @@
                     app:boxStrokeColor="@color/color_1">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/harga_motor_add_data_Tl"
+                        android:id="@+id/harga_mobil_update_data_Tl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/color_1"
                         android:inputType="number"
                         android:textStyle="bold"
                         android:textSize="14sp"
-                        android:hint="Harga Motor" />
+                        android:hint="Harga Mobil" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -129,34 +129,34 @@
                     app:boxStrokeColor="@color/color_1">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/mesin_motor_add_data_Tl"
+                        android:id="@+id/mesin_motor_update_data_Tl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Mesin Motor"
+                        android:inputType="text"
+                        android:textColor="@color/color_1"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:errorEnabled="true"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/color_1">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/sus_motor_update_data_Tl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/color_1"
                         android:inputType="text"
                         android:textStyle="bold"
                         android:textSize="14sp"
-                        android:hint="Mesin Motor" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:errorEnabled="true"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/color_1">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/suspensi_motor_add_data_Tl"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/color_1"
-                        android:inputType="number"
-                        android:textStyle="bold"
-                        android:textSize="14sp"
-                        android:hint="Suspensi" />
+                        android:hint="Suspensi Motor" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -169,14 +169,14 @@
                     app:boxStrokeColor="@color/color_1">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/transmisi_motor_add_data_Tl"
+                        android:id="@+id/trans_motor_update_data_Tl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/color_1"
                         android:inputType="text"
                         android:textStyle="bold"
                         android:textSize="14sp"
-                        android:hint="Transmisi" />
+                        android:hint="Transmisi Motor" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -190,11 +190,13 @@
                     app:boxStrokeColor="@color/color_1">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/stok_motor_add_data_Tl"
+                        android:id="@+id/stok_motor_update_data_Tl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/color_1"
-                        android:inputType="number"
+                        android:inputType="none"
+                        android:longClickable="false"
+                        android:clickable="false"
                         android:textStyle="bold"
                         android:textSize="14sp"
                         android:hint="Stok Motor" />
@@ -212,7 +214,7 @@
                     app:layout_constraintStart_toStartOf="parent">
 
                     <LinearLayout
-                        android:id="@+id/simpan_data_motor_ly"
+                        android:id="@+id/simpan_updatedata_motor_ly"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="?attr/selectableItemBackground"

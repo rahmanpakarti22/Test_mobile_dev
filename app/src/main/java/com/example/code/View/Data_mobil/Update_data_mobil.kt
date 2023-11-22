@@ -83,6 +83,7 @@ class Update_data_mobil : AppCompatActivity()
         db.UpdateMobil(UpdateDataMobil)
         val intent = Intent(this, Add_data_mobil::class.java)
         startActivity(intent)
+        finish()
         Toast.makeText(this, "Data Terupdate", Toast.LENGTH_SHORT).show()
     }
 }

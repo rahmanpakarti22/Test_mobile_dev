@@ -15,8 +15,6 @@ class Add_data_mobil : AppCompatActivity()
     private lateinit var db: MobilDatabaseHelper
     private lateinit var mobilAdapter: MobilAdapter
 
-
-
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -32,11 +30,13 @@ class Add_data_mobil : AppCompatActivity()
         binding.backLy.setOnClickListener {
             val intent = Intent(this, Home::class.java)
             startActivity(intent)
+            finish()
         }
 
         binding.tambahDataMobilHomeLy.setOnClickListener {
             val intent = Intent(this, Mobil_data::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
