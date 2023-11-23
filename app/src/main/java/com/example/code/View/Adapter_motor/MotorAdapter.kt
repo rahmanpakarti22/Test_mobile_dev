@@ -14,6 +14,7 @@ import com.example.code.View.Data_motor.Motor
 import com.example.code.View.Data_motor.MotorDatabaseHelper
 import com.example.code.View.Data_motor.Update_data_motor
 import com.example.code.View.Transaksi_motor
+import com.example.code.View.Transaksi_motor_list
 
 class MotorAdapter(private var motor: List<Motor>, context: Context) : RecyclerView.Adapter<MotorAdapter.MotorViewHolder>(){
 
@@ -26,7 +27,8 @@ class MotorAdapter(private var motor: List<Motor>, context: Context) : RecyclerV
         val hargaTextView: TextView = itemView.findViewById(R.id.harga_motor_tv)
         val editDataMotor: LinearLayout  = itemView.findViewById(R.id.edit_data_motor)
         val hapusDataMotor: LinearLayout = itemView.findViewById(R.id.hapus_data_motor)
-        val jualDataMotor: LinearLayout = itemView.findViewById(R.id.jual_data_motor)
+        val jualDataMotor: LinearLayout  = itemView.findViewById(R.id.jual_data_motor)
+        val listDataTransaksimotor: LinearLayout = itemView.findViewById(R.id.list_tr_motor_ly)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MotorViewHolder {
@@ -52,6 +54,13 @@ class MotorAdapter(private var motor: List<Motor>, context: Context) : RecyclerV
 
         holder.jualDataMotor.setOnClickListener {
             val intent = Intent(holder.itemView.context, Transaksi_motor::class.java).apply {
+                putExtra("id_motor", motor.id)
+            }
+            holder.itemView.context.startActivity(intent)
+        }
+
+        holder.listDataTransaksimotor.setOnClickListener {
+            val intent = Intent(holder.itemView.context, Transaksi_motor_list::class.java).apply {
                 putExtra("id_motor", motor.id)
             }
             holder.itemView.context.startActivity(intent)

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
-    tools:context=".View.Transaksi_motor">
+    tools:context=".View.Transaksi_motor_list">
 
     <LinearLayout
         android:id="@+id/back_ly"
@@ -94,7 +94,7 @@
                             android:layout_margin="13sp">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/tahun_motor_tr_tv"
+                                android:id="@+id/tahun_motor_tr_detail_tv"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/color_2"
@@ -113,7 +113,7 @@
                             android:layout_margin="10sp">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/warna_motor_tr_tv"
+                                android:id="@+id/warna_motor_tr_detail_tv"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/color_2"
@@ -139,7 +139,7 @@
                             android:layout_margin="13sp">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/mesin_motor_tr_tv"
+                                android:id="@+id/mesin_motor_tr_detail_tv"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/color_2"
@@ -158,7 +158,7 @@
                             android:layout_margin="10sp">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/harga_motor_tr_tv"
+                                android:id="@+id/harga_motor_tr_detail_tv"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/color_2"
@@ -184,7 +184,7 @@
                             android:layout_margin="13sp">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/sus_motor_tr_tv"
+                                android:id="@+id/sus_motor_tr_detail_tv"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/color_2"
@@ -203,7 +203,7 @@
                             android:layout_margin="10sp">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/trans_motor_tr_tv"
+                                android:id="@+id/trans_motor_tr_detail_tv"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/color_2"
@@ -228,7 +228,7 @@
                         app:boxStrokeColor="@color/color_2">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/stok_motor_tr_tv"
+                            android:id="@+id/stok_motor_tr_detail_tv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/color_2"
@@ -263,105 +263,11 @@
                     android:orientation="vertical"
                     android:layout_margin="10dp">
 
-                    <TextView
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_list_tr_motor"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Data Pembeli"
-                        android:textColor="@color/color_2"
-                        android:textStyle="bold"
-                        android:textSize="23sp" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        app:errorEnabled="true"
-                        app:boxBackgroundMode="outline"
-                        app:boxStrokeColor="@color/color_1">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/pembeli_motor_Tl"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/color_1"
-                            android:inputType="text"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:hint="Nama Pembeli" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        app:errorEnabled="true"
-                        app:boxBackgroundMode="outline"
-                        app:boxStrokeColor="@color/color_1">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/alamat_pembeli_motor_Tl"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/color_1"
-                            android:inputType="text"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:hint="Alamat Pembeli" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        app:errorEnabled="true"
-                        app:boxBackgroundMode="outline"
-                        app:boxStrokeColor="@color/color_1">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/kontak_pembeli_motor_Tl"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/color_1"
-                            android:inputType="text"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:hint="Kontak Pembeli" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:backgroundTint="@color/color_2"
-                        app:cardCornerRadius="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent">
-
-                        <LinearLayout
-                            android:id="@+id/simpan_edata_tr_motor_ly"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="?attr/selectableItemBackground"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="KIRIM"
-                                android:textSize="16sp"
-                                android:textColor="@color/color_3"
-                                android:textStyle="bold"
-                                android:gravity="center"/>
-
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
+                        android:layout_height="400dp"
+                        tools:listitem="@layout/item_transaksi_motor"/>
 
                 </LinearLayout>
 

@@ -22,12 +22,12 @@ class MotorDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         private const val COLUMN_TRANS_MOTOR = "transmisi_motor"
         private const val COLUMN_STOK_MOTOR  = "stok_motor"
 
-        private const val TABLE_TRANSAKSI_NAME = "transaksi_data"
+        private const val TABLE_TRANSAKSI_NAME = "transaksi_data_motor"
         private const val COLUMN_ID_TRANSAKSI  = "id_transaksi"
         private const val COLUMN_ID_MOTOR_FK   = "id_motor_fk"
-        private const val COLUMN_PEMBELI_TR_MOTOR = "pembeli_mobil"
-        private const val COLUMN_KONTAK_TR_MOTOR  = "kontak_mobil"
-        private const val COLUMN_ALAMAT_TR_MOTOR  = "alamat_mobil"
+        private const val COLUMN_PEMBELI_TR_MOTOR = "pembeli_motor"
+        private const val COLUMN_KONTAK_TR_MOTOR  = "kontak_motor"
+        private const val COLUMN_ALAMAT_TR_MOTOR  = "alamat_motor"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -41,7 +41,7 @@ class MotorDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         "$COLUMN_KONTAK_TR_MOTOR TEXT,  " +
         "$COLUMN_ALAMAT_TR_MOTOR TEXT,  " +
         "FOREIGN KEY($COLUMN_ID_MOTOR_FK) REFERENCES $TABLE_NAME($COLUMN_ID_MOTOR))"
-        db?.execSQL(CreateTableQuery)
+        db?.execSQL(CreateTransaksiTableQuery)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -153,5 +153,28 @@ class MotorDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
 
         db.execSQL(updatestokMotorQuery)
         db.close()
+    }
+
+    fun getTransaksiMotorById(motorId: Int): List<Transaksi_motor_data>{
+        val db = readableDatabase
+        val query = "SELECT * FROM $TABLE_TRANSAKSI_NAME WHERE $COLUMN_ID_MOTOR_FK = $motorId"
+        val cursor = db.rawQuery(query, null)
+        val transaksiMotorList = mutableListOf<Transaksi_motor_data>()
+
+        while (cursor.moveToNext())
+        {
+            val idTransaksi = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID_TRANSAKSI))
+            val idMotorFk   = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID_MOTOR_FK))
+            val pembeli     = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PEMBELI_TR_MOTOR))
+            val kontak      = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_KONTAK_TR_MOTOR))
+            val alamat      = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ALAMAT_TR_MOTOR))
+
+            val tr_motor = Transaksi_motor_data(idTransaksi, idMotorFk, pembeli, kontak, alamat)
+            transaksiMotorList.add(tr_motor)
+        }
+
+        cursor.close()
+        db.close()
+        return transaksiMotorList
     }
 }

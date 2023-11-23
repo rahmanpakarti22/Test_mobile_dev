@@ -20,7 +20,7 @@ class MobilDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         private const val COLUMN_TIPE_MOBIL = "tipe_mobil"
         private const val COLUMN_STOK_MOBIL = "stok_mobil"
 
-        private const val TABLE_TRANSAKSI_NAME = "transaksi_data"
+        private const val TABLE_TRANSAKSI_NAME = "transaksi_data_mobil"
         private const val COLUMN_ID_TRANSAKSI  = "id_transaksi"
         private const val COLUMN_ID_MOBIL_FK   = "id_mobil_fk"
         private const val COLUMN_PEMBELI_TR_MOBIL = "pembeli_mobil"
