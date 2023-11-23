@@ -13,8 +13,8 @@ import com.example.code.R
 import com.example.code.View.Data_motor.Motor
 import com.example.code.View.Data_motor.MotorDatabaseHelper
 import com.example.code.View.Data_motor.Update_data_motor
-import com.example.code.View.Transaksi_motor
-import com.example.code.View.Transaksi_motor_list
+import com.example.code.View.Transaksi_motor.Transaksi_motor
+import com.example.code.View.Transaksi_motor.Transaksi_motor_list
 
 class MotorAdapter(private var motor: List<Motor>, context: Context) : RecyclerView.Adapter<MotorAdapter.MotorViewHolder>(){
 

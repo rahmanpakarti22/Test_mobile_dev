@@ -1,4 +1,4 @@
-package com.example.code.View
+package com.example.code.View.Transaksi_motor
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,10 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.code.R
-import com.example.code.View.Data_mobil.Add_data_mobil
 import com.example.code.View.Data_motor.Add_data_motor
 import com.example.code.View.Data_motor.MotorDatabaseHelper
-import com.example.code.View.Transaksi_mobil.Transaksi
 import com.example.code.databinding.ActivityTransaksiMotorBinding
 import com.google.android.material.textfield.TextInputEditText
 

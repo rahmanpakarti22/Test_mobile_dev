@@ -157,6 +157,8 @@ class MobilDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         val updateStockQuery =
             "UPDATE $TABLE_NAME SET $COLUMN_STOK_MOBIL = $COLUMN_STOK_MOBIL - 1 WHERE $COLUMN_ID_MOBIL = ${transaksi.idMobilFk}"
 
+
+
         db.execSQL(updateStockQuery)
         db.close()
     }

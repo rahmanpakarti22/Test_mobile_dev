@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
-    tools:context=".View.Transaksi_motor_list">
+    tools:context=".View.Transaksi_motor.Transaksi_motor_list">
 
     <LinearLayout
         android:id="@+id/back_ly"

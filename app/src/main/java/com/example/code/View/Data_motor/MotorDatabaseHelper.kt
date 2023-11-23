@@ -4,8 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.example.code.View.Transaksi_motor
-import com.example.code.View.Transaksi_motor_data
+import com.example.code.View.Transaksi_motor.Transaksi_motor_data
 
 class MotorDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
