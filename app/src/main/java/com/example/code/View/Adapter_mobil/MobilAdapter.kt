@@ -14,8 +14,8 @@ import com.example.code.R
 import com.example.code.View.Data_mobil.Mobil
 import com.example.code.View.Data_mobil.MobilDatabaseHelper
 import com.example.code.View.Data_mobil.Update_data_mobil
-import com.example.code.View.Transaksi_mobil
-import com.example.code.View.Transaksi_mobil_list
+import com.example.code.View.Transaksi_mobil.Transaksi_mobil
+import com.example.code.View.Transaksi_mobil.Transaksi_mobil_list
 
 class MobilAdapter(private var mobil: List<Mobil>, context: Context) :
     RecyclerView.Adapter<MobilAdapter.MobilViewHolder>() {

@@ -4,7 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.example.code.View.Transaksi
+import com.example.code.View.Transaksi_mobil.Transaksi
 
 class MobilDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
@@ -21,11 +21,11 @@ class MobilDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         private const val COLUMN_STOK_MOBIL = "stok_mobil"
 
         private const val TABLE_TRANSAKSI_NAME = "transaksi_data"
-        private const val COLUMN_ID_TRANSAKSI = "id_transaksi"
-        private const val COLUMN_ID_MOBIL_FK = "id_mobil_fk"
+        private const val COLUMN_ID_TRANSAKSI  = "id_transaksi"
+        private const val COLUMN_ID_MOBIL_FK   = "id_mobil_fk"
         private const val COLUMN_PEMBELI_TR_MOBIL = "pembeli_mobil"
-        private const val COLUMN_KONTAK_TR_MOBIL = "kontak_mobil"
-        private const val COLUMN_ALAMAT_TR_MOBIL = "alamat_mobil"
+        private const val COLUMN_KONTAK_TR_MOBIL  = "kontak_mobil"
+        private const val COLUMN_ALAMAT_TR_MOBIL  = "alamat_mobil"
 
     }
 
@@ -154,12 +154,10 @@ class MobilDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
 
         db.insert(TABLE_TRANSAKSI_NAME, null, values)
 
-        // Decrease the stock count in the "mobil_data" table
         val updateStockQuery =
             "UPDATE $TABLE_NAME SET $COLUMN_STOK_MOBIL = $COLUMN_STOK_MOBIL - 1 WHERE $COLUMN_ID_MOBIL = ${transaksi.idMobilFk}"
 
         db.execSQL(updateStockQuery)
-
         db.close()
     }
 

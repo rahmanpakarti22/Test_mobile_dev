@@ -4,6 +4,8 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.code.View.Transaksi_motor
+import com.example.code.View.Transaksi_motor_data
 
 class MotorDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -19,10 +21,26 @@ class MotorDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         private const val COLUMN_SUS_MOTOR   = "suspensi_motor"
         private const val COLUMN_TRANS_MOTOR = "transmisi_motor"
         private const val COLUMN_STOK_MOTOR  = "stok_motor"
+
+        private const val TABLE_TRANSAKSI_NAME = "transaksi_data"
+        private const val COLUMN_ID_TRANSAKSI  = "id_transaksi"
+        private const val COLUMN_ID_MOTOR_FK   = "id_motor_fk"
+        private const val COLUMN_PEMBELI_TR_MOTOR = "pembeli_mobil"
+        private const val COLUMN_KONTAK_TR_MOTOR  = "kontak_mobil"
+        private const val COLUMN_ALAMAT_TR_MOTOR  = "alamat_mobil"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
         val CreateTableQuery = "CREATE TABLE $TABLE_NAME($COLUMN_ID_MOTOR INTEGER PRIMARY KEY AUTOINCREMENT, $COLUMN_TAHUN_MOTOR TEXT, $COLUMN_WARNA_MOTOR TEXT, $COLUMN_HARGA_MOTOR TEXT, $COLUMN_MESIN_MOTOR TEXT, $COLUMN_SUS_MOTOR TEXT, $COLUMN_TRANS_MOTOR TEXT , $COLUMN_STOK_MOTOR TEXT)"
+        db?.execSQL(CreateTableQuery)
+
+        val CreateTransaksiTableQuery =
+            "CREATE TABLE $TABLE_TRANSAKSI_NAME ($COLUMN_ID_TRANSAKSI INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        "$COLUMN_ID_MOTOR_FK INTEGER,   " +
+        "$COLUMN_PEMBELI_TR_MOTOR TEXT, " +
+        "$COLUMN_KONTAK_TR_MOTOR TEXT,  " +
+        "$COLUMN_ALAMAT_TR_MOTOR TEXT,  " +
+        "FOREIGN KEY($COLUMN_ID_MOTOR_FK) REFERENCES $TABLE_NAME($COLUMN_ID_MOTOR))"
         db?.execSQL(CreateTableQuery)
     }
 
@@ -116,6 +134,24 @@ class MotorDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         val whereclause = "$COLUMN_ID_MOTOR = ?"
         val whereArgs   = arrayOf(motorId.toString())
         db.delete(TABLE_NAME, whereclause, whereArgs)
+        db.close()
+    }
+
+    fun InsertDataTransaksiMotor(transaksiMotor: Transaksi_motor_data)
+    {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put(COLUMN_ID_MOTOR_FK, transaksiMotor.idMotorFk)
+            put(COLUMN_PEMBELI_TR_MOTOR, transaksiMotor.pembelimotor)
+            put(COLUMN_KONTAK_TR_MOTOR, transaksiMotor.kontakmotor)
+            put(COLUMN_ALAMAT_TR_MOTOR, transaksiMotor.alamatmotor)
+        }
+        db.insert(TABLE_TRANSAKSI_NAME, null, values)
+
+        val updatestokMotorQuery =
+            "UPDATE $TABLE_NAME SET $COLUMN_STOK_MOTOR = $COLUMN_STOK_MOTOR -1 WHERE $COLUMN_ID_MOTOR = ${transaksiMotor.idMotorFk}"
+
+        db.execSQL(updatestokMotorQuery)
         db.close()
     }
 }
