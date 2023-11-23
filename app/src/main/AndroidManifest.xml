@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         tools:targetApi="31">
         <activity
+            android:name=".View.Transaksi_mobil_list"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Act" />
+        <activity
             android:name=".View.Transaksi_mobil"
             android:exported="false"
             android:screenOrientation="portrait"

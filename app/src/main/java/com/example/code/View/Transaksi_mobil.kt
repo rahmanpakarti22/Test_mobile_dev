@@ -4,11 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import android.widget.Toast
 import com.example.code.R
 import com.example.code.View.Data_mobil.Add_data_mobil
-import com.example.code.View.Data_mobil.Mobil
 import com.example.code.View.Data_mobil.MobilDatabaseHelper
 import com.example.code.databinding.ActivityTransaksiMobilBinding
 import com.google.android.material.textfield.TextInputEditText
@@ -108,7 +106,7 @@ class Transaksi_mobil : AppCompatActivity()
         }
         else
         {
-            val transaksi = Transaksi(0, idMobilFk = mobilId.toString(),pembeli_mobil_tr, kontak_mobil_tr, alamat_mobil_tr)
+            val transaksi = Transaksi(0, idMobilFk = mobilId,pembeli_mobil_tr, kontak_mobil_tr, alamat_mobil_tr)
             Log.d("Database Insert", "idMobilFk: ${mobilId.toString()}, pembeli_mobil_tr: $pembeli_mobil_tr, kontak_mobil_tr: $kontak_mobil_tr, alamat_mobil_tr: $alamat_mobil_tr")
             db.insertDataTransaksi(transaksi)
 
